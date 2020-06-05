@@ -1,0 +1,38 @@
+.recommendations li{
+    list-style: None;
+    text-decoration: black;
+}
+
+.section1{
+    text-align: center;
+    position: relative;
+    top: 90px;
+    
+}
+
+.background{
+    background-image: url(https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_960_720.jpg);
+    background-size: 1400px 250px;         
+    height: 250px;                
+    position: relative;         
+    padding: 20px; 
+}
+
+.recommendations{
+    text-align: left;
+    position: absolute;
+    float: center;
+    top: 180px;
+    left: 400px;    
+}
+
+.sentiment{       
+    border: 4px solid black;
+    height: 35px;
+    width: 95px;
+    padding: 2px;
+    position: absolute;
+    top: 250px;
+    left: 850px;
+    text-align: center;
+}
