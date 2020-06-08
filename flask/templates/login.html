@@ -1,0 +1,17 @@
+{% extends "layouts.html" %}
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block body %}
+<form action="{{ url_for('login_results') }}" method="post">
+	<div class="form-group">
+	    <label for="uname"><b>Username</b></label>
+	    <input type="text" placeholder="Enter Username" name="Name" required>
+	    <label for="psw"><b>Password</b></label>
+	    <input type="password" placeholder="Enter Password" name="Password" required>
+	    <button type="submit">Login</button>    
+	</div>  
+</form>
+
+{% endblock %}
