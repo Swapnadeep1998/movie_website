@@ -8,4 +8,15 @@ Login Page
 <h4>{{ pos }}% liked this movie</h4>
 <h4>{{ neg }}% disliked this movie</h4>
 <h4>Avg ratings = {{ sum }}</h4>
+<section> 
+	<ul>
+	{% for i in name %}
+	<li>
+	 <div class="font-weight-bold">{{ i[1] }}</div>
+	 <span>{{ i[0] }}</span>
+	</li>
+	{% endfor %}
+	</ul>
+</section>
+
 {% endblock %}

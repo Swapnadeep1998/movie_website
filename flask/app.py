@@ -90,7 +90,9 @@ def stats():
     avg_rate = db.session.query(Movies.ratings).filter(Movies.movie_name==movie_name).all()
     avg_rate = np.average(avg_rate)
 
-    return render_template("stats.html", message=movie_name, pos = per_pos_sentiment, neg = per_neg_sentiment, sum = avg_rate)
+    user = db.session.query(Movies.reviews,Users.user_name).filter(and_(Movies.user_id==Users.id, Movies.movie_name==movie_name)).all()
+
+    return render_template("stats.html", message=movie_name, pos = per_pos_sentiment, neg = per_neg_sentiment, sum = avg_rate, name = user)
 
 
                          
