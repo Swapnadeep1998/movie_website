@@ -1,6 +1,6 @@
 {% extends "layouts.html" %}
 {% block title %}
-Login Page
+Statistics of the movie
 {% endblock %}
 
 {% block body %}
@@ -8,12 +8,24 @@ Login Page
 <h4>{{ pos }}% liked this movie</h4>
 <h4>{{ neg }}% disliked this movie</h4>
 <h4>Avg ratings = {{ sum }}</h4>
-<section> 
+<section class="reviews">
+<h1> Reviews </h1> 
 	<ul>
 	{% for i in name %}
 	<li>
-	 <div class="font-weight-bold">{{ i[1] }}</div>
+	 <div><h3>{{ i[1] }} : {{ scores[name.index(i)] }}</h3></div>
 	 <span>{{ i[0] }}</span>
+	 <form action="{{ url_for('score') }}" method="post">
+	<select id="score" name= score[] size="1">
+		<option>Rate review</option>
+  		<option value=1,{{i[1]}}>1</option>
+  		<option value=2,{{i[1]}}>2</option>
+  		<option value=3,{{i[1]}}>3</option>
+  		<option value=4,{{i[1]}}>4</option>
+  		<option value=5,{{i[1]}}>5</option>
+	</select> 
+	<button>Submit</button>
+	 </form>
 	</li>
 	{% endfor %}
 	</ul>

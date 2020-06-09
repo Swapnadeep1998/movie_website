@@ -29,11 +29,13 @@ def signup():
 def login_results():
     session["user_name"] = request.form.get('Name')
     session["password"] = request.form.get('Password')
-
+    user_id = db.session.query(Users.id).filter(Users.user_name==session["user_name"]).first()
+    ranks = db.session.query(Scores.score).filter(Scores.user_id==user_id).all()
+    rank = np.sum(ranks)
     #Flight.query.filter(and_(Flight.origin == "Paris", Flight.duration > 500)).all()
     count = Users.query.filter(and_(Users.user_name == session["user_name"],Users.password == session["password"])).all()
     if len(count)==1: 
-        return render_template("movies.html")             
+        return render_template("movies.html", name = session["user_name"], rank = rank)             
     else:
         message = "You are not registered, Please register yourself"
         return render_template("error.html", message = message)
@@ -85,15 +87,39 @@ def stats():
     neg_sentiment = Movies.query.filter(and_(Movies.movie_name==movie_name, Movies.sentiment=='Negative')).count()
     pos_sentiment = Movies.query.filter(and_(Movies.movie_name==movie_name, Movies.sentiment=='Positive')).count()
     total_sentiment = pos_sentiment+neg_sentiment
-    per_pos_sentiment = (pos_sentiment/total_sentiment)*100
-    per_neg_sentiment = (neg_sentiment/total_sentiment)*100
-    avg_rate = db.session.query(Movies.ratings).filter(Movies.movie_name==movie_name).all()
-    avg_rate = np.average(avg_rate)
+    
+    if total_sentiment==0:
+        per_pos_sentiment = 0
+        per_neg_sentiment = 0
+        avg_rate = 0
+    else:
+        per_pos_sentiment = (pos_sentiment/total_sentiment)*100
+        per_neg_sentiment = (neg_sentiment/total_sentiment)*100
+        avg_rate = db.session.query(Movies.ratings).filter(Movies.movie_name==movie_name).all()
+        avg_rate = np.average(avg_rate)
 
     user = db.session.query(Movies.reviews,Users.user_name).filter(and_(Movies.user_id==Users.id, Movies.movie_name==movie_name)).all()
+    scores = []
+    for i in user:
+        user_name = i[1]
+        id = db.session.query(Users.id).filter(Users.user_name==user_name).first()
+        rank = db.session.query(Scores.score).filter(Scores.user_id == id).all()
+        score = np.sum(rank)
+        scores.append(score)
+    return render_template("stats.html", message=movie_name, pos = per_pos_sentiment, neg = per_neg_sentiment, sum = avg_rate, name = user, scores = scores)
 
-    return render_template("stats.html", message=movie_name, pos = per_pos_sentiment, neg = per_neg_sentiment, sum = avg_rate, name = user)
-
+@app.route("/score", methods=["POST","GET"])
+def score():
+    score_ = request.form.getlist("score[]")
+    # ['1,swapnadeep']
+    l = score_[0].split(",") 
+    score = int(l[0])
+    user_name = l[1]
+    user_id = db.session.query(Users.id).filter(Users.user_name == user_name).first()
+    score_data = Scores(user_id = user_id, score = score)
+    db.session.add(score_data) 
+    db.session.commit()
+    return render_template("thanks.html")
 
                          
 if __name__=="__main__":

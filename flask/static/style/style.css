@@ -42,3 +42,8 @@ ul .recommendations{
     right: 600px;
     text-align: center;
 }
+
+.reviews > .user_name{
+    font-size: 50px;
+    font-weight: bold;
+}

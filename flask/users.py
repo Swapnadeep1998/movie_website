@@ -20,4 +20,10 @@ class Movies(db.Model):
 	reviews = db.Column(db.String, nullable = False)
 	sentiment = db.Column(db.String, nullable=False)
 
-		
+class Scores(db.Model):
+	__tablename__ = "scores_py"
+	id = db.Column(db.Integer, primary_key=True)
+	user_id = db.Column(db.Integer, db.ForeignKey("users_data.id"), nullable=False)
+	score = db.Column(db.Integer, nullable=False, default=0)
+
+						
