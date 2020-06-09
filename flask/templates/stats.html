@@ -1,0 +1,11 @@
+{% extends "layouts.html" %}
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block body %}
+<h1>Showing stats for {{ message }}</h1>
+<h4>{{ pos }}% liked this movie</h4>
+<h4>{{ neg }}% disliked this movie</h4>
+<h4>Avg ratings = {{ sum }}</h4>
+{% endblock %}

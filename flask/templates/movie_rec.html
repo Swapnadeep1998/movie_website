@@ -1,0 +1,29 @@
+{% extends "layouts.html" %}
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block body %}
+
+<div class= "container recommend">
+<h1> Some Movies You may Also Like</h1>
+<section class="col-md-7">     
+    <form action="{{ url_for('stats') }}" class="form-group" method="post">
+        <select size="10" name = "select_movie">
+            <ul class="recommendations">            
+            {% for item in items %}
+                <option><li>{{ item }}</li></option>
+            {% endfor %}
+
+            </ul>
+        </select>
+        <button> See Stats for this movie</button>
+    </form>
+
+</section>
+
+<section class="col-md-5">
+<div class="sentiment">{{ senti }}</div>
+</section>
+</div>
+{% endblock %}

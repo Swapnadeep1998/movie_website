@@ -4,6 +4,7 @@ from users import *
 from flask import Flask, render_template, request, session
 import os
 from sqlalchemy import * 
+import numpy as np
 
 
 app = Flask(__name__)
@@ -74,9 +75,24 @@ def movies():
         user_id = Users.query.filter(Users.user_name==user_name).first().id        
         movies = Movies(user_id=user_id,movie_name=movie_name,ratings=ratings,reviews=reviews,sentiment=Sentiment)
         db.session.add(movies) 
-        db.session.commit()       
-        return render_template("movies.html", items= items, senti = Sentiment)                
-    return render_template("movies.html")
+        db.session.commit()               
+        return render_template("movie_rec.html", items= items, senti = Sentiment)
+    
+
+@app.route("/movie_stats", methods = ["POST","GET"])
+def stats():
+    movie_name = request.form.get("select_movie")
+    neg_sentiment = Movies.query.filter(and_(Movies.movie_name==movie_name, Movies.sentiment=='Negative')).count()
+    pos_sentiment = Movies.query.filter(and_(Movies.movie_name==movie_name, Movies.sentiment=='Positive')).count()
+    total_sentiment = pos_sentiment+neg_sentiment
+    per_pos_sentiment = (pos_sentiment/total_sentiment)*100
+    per_neg_sentiment = (neg_sentiment/total_sentiment)*100
+    avg_rate = db.session.query(Movies.ratings).filter(Movies.movie_name==movie_name).all()
+    avg_rate = np.average(avg_rate)
+
+    return render_template("stats.html", message=movie_name, pos = per_pos_sentiment, neg = per_neg_sentiment, sum = avg_rate)
+
+
                          
 if __name__=="__main__":
     with app.app_context():

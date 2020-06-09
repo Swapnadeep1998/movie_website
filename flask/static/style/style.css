@@ -9,6 +9,18 @@
     top: 90px;
     
 }
+div .recommend{
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    float: center;
+}
+ul .recommendations{
+    
+    position: absolute;
+    top: 500px;    
+    right: 500px;    
+}
 
 .background{
     background-image: url(https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_960_720.jpg);
@@ -18,13 +30,7 @@
     padding: 20px; 
 }
 
-.recommendations{
-    text-align: left;
-    position: absolute;
-    float: center;
-    top: 180px;
-    left: 400px;    
-}
+
 
 .sentiment{       
     border: 4px solid black;
@@ -32,7 +38,7 @@
     width: 95px;
     padding: 2px;
     position: absolute;
-    top: 250px;
-    left: 850px;
+    top: 50px;
+    right: 600px;
     text-align: center;
 }
