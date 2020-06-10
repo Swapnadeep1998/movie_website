@@ -1,7 +1,0 @@
-Host    ec2-52-70-15-120.compute-1.amazonaws.com
-Database    dal2prj7bavkvv
-User    ppcgsodtgvsime
-Port    5432
-Password    49fda86dc266cd00388324f0daffe99b25d48de85965ff86ee9ba10f97e806e7
-URI    postgres://ppcgsodtgvsime:49fda86dc266cd00388324f0daffe99b25d48de85965ff86ee9ba10f97e806e7@ec2-52-70-15-120.compute-1.amazonaws.com:5432/dal2prj7bavkvv
-Heroku CLI    heroku pg:psql postgresql-opaque-04161 --app futureprooflabs-movie-app
