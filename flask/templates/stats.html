@@ -1,14 +1,17 @@
 {% extends "layouts.html" %}
 {% block title %}
-Statistics of the movie
+Login Page
 {% endblock %}
 
 {% block body %}
 <h1>Showing stats for {{ message }}</h1>
-<h4>{{ pos }}% liked this movie</h4>
-<h4>{{ neg }}% disliked this movie</h4>
-<h4>Avg ratings = {{ sum }}</h4>
-<section class="reviews">
+<h6>{{ pos|tojson }}% liked this movie</h6>
+<h6>{{ neg|tojson }}% disliked this movie</h6>
+<h6>Avg ratings = {{ sum }}</h6>
+<div class="container">
+	<div class="conta">
+	<canvas id="chart"></canvas>
+	<section class="reviews">
 <h1> Reviews </h1> 
 	<ul>
 	{% for i in name %}
@@ -30,5 +33,32 @@ Statistics of the movie
 	{% endfor %}
 	</ul>
 </section>
+	</div>
+</div>
+<script>
+	new Chart(document.getElementById("chart"), {
+		  type: 'pie',
+		  data: {
+			labels: ["Positive","Negative"],
+			datasets: [
+			  {
+				label: "Sentiment Pie Chart",
+				backgroundColor: ["green", "red"],
+				data: [{{pos|tojson}}, {{neg|tojson}}],
+			  },
+			]
+		  },
+		  
+		  options:{
+			maintainAspectRation: true,
+			responsive: true,
+			legend: { display: true },
+			title: {
+			  display: true,
+			  text: 'Sentiment Pie Chart'
+			}
+		  }
+		  });
+</script>
 
 {% endblock %}
