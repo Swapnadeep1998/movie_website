@@ -6,6 +6,34 @@ Login Page
 {% block body %}
 <form action="{{ url_for('login_results') }}" method="post">
 	<div class="form-group">
+
+		<style>
+			body{
+				
+        		;
+        		background-image: url(https://cdn.pixabay.com/photo/2017/04/05/15/36/film-2205325_960_720.jpg);
+        		background-size: 1400px 500px;
+        		position: fixed;
+        		
+        		font-family: Arial,Helvetica,Sans-sreif
+			}
+
+			button{
+				margin-top: 50px;
+				margin-left: 50px;
+				background-color: #CD5C5C;
+				font-size: 120%;
+				color: white;
+			}
+
+			div.Username{
+				margin: 50px;
+			}
+			div.pwd{
+				margin: 50px;
+			}
+
+		</style>
 	    <label for="uname"><b>Username</b></label>
 	    <input type="text" placeholder="Enter Username" name="Name" required>
 	    <label for="psw"><b>Password</b></label>
