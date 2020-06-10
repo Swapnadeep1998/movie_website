@@ -38,8 +38,8 @@ ul .recommendations{
     width: 95px;
     padding: 2px;
     position: absolute;
-    top: 50px;
-    right: 600px;
+    bottom:  170px;
+    left: 550px;
     text-align: center;
 }
 
