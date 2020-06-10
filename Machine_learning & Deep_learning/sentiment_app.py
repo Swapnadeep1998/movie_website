@@ -5,19 +5,27 @@ import json
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
-
-senti_model = load_model("sentiment_version_2.h5")
-
 with open('tokenizer_version_2.json') as f:
     data = json.load(f)
     tokenizer = tokenizer_from_json(data)
 
+senti_model = load_model("sentiment_version_2.h5")
+max_len = 150
+trunc_type = 'post'
+padding = 'post'
 
-
-def clean_text(text): 
+def clean_text(text):  
     
     text = text.lower()
-    text = re.sub(r"i'm", "i am", text)    
+    text = re.sub(r"i'm", "i am", text)
+    text = re.sub(r"books", "movies", text)
+    text = re.sub(r"book", "movie", text)
+    text = re.sub(r"read", "watch", text)
+    text = re.sub(r"pages", "plots", text)
+    text = re.sub(r"author", "story writer", text)
+    text = re.sub(r"written", "directed", text)
+    text = re.sub(r"ordered", "booked ticket", text)    
+    text = re.sub(r"reading", "watching", text)
     text = re.sub(r"he's", "he is", text)
     text = re.sub(r"she's", "she is", text)
     text = re.sub(r"that's", "that is", text)        
@@ -47,13 +55,8 @@ def CleanTokenize(l):
 
 
 def sentiment(review):
-    max_len = 150    
-    padding = 'post'
-    cleaned_review = CleanTokenize(review)
-    test_sequences = tokenizer.texts_to_sequences(cleaned_review)
-    test_padded = pad_sequences(test_sequences,maxlen=max_len, padding=padding)
-    prob = senti_model.predict(test_padded)       
-    return prob[0][0]
-
-#print(sentiment(['Awesome Movie']))
-
+	cleaned_review = CleanTokenize(review)
+	test_sequences = tokenizer.texts_to_sequences(cleaned_review)
+	test_padded = pad_sequences(test_sequences,maxlen=max_len, padding=padding)
+	prob = senti_model.predict(test_padded)
+	return prob
