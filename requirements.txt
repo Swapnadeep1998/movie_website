@@ -137,7 +137,6 @@ pluggy==0.13.1
 ply==3.11
 prometheus-client==0.7.1
 prompt-toolkit==3.0.3
-protobuf==3.11.4
 psutil==5.6.7
 psycopg2==2.8.5
 ptyprocess==0.6.0
