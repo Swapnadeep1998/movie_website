@@ -1,7 +1,6 @@
 Flask==1.1.1
 Flask-SQLAlchemy==2.4.3
 h5py==2.10.0
-itsdangerous==1.1.0
 json5==0.9.1
 numpy==1.18.1
 pandas==1.0.1
