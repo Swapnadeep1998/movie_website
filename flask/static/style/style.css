@@ -1,0 +1,50 @@
+.recommendations li{
+    list-style: None;
+    text-decoration: black;
+}
+
+.section1{
+    text-align: center;
+    position: relative;
+    top: 90px;
+    
+}
+div .recommend{
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    float: center;
+}
+ul .recommendations{
+    
+    position: absolute;
+    top: 500px;    
+    right: 500px;    
+}
+
+.background{
+    background-image: url(https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_960_720.jpg);
+    background-size: 1400px 250px;         
+    height: 250px;                
+    position: relative;         
+    padding: 20px; 
+}
+
+
+
+.sentiment{       
+    border: 4px solid black;
+    height: 35px;
+    width: 95px;
+    padding: 2px;
+    position: absolute;
+    bottom:  170px;
+    left: 550px;
+    text-align: center;
+}
+
+
+.reviews > .user_name{
+    font-size: 50px;
+    font-weight: bold;
+}

@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "futureproof/bin/python",
+    "python.pythonPath": "/home/swapnadeep/anaconda3/envs/futureproof/bin/python",
     "git.ignoreLimitWarning": true
 }
