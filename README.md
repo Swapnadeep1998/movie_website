@@ -34,6 +34,7 @@ https://youtu.be/AtNg5vvKMug
 Application URL
 http://ec2-13-232-120-215.ap-south-1.compute.amazonaws.com:8080
 
+Test: Try using movies like Batman, True lies, Top gun etc for better statistics visualization
 
 Tools/Algorithms used
 1. For recommendation - Colaborative Filtering
