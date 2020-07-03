@@ -1,6 +1,10 @@
 # Classifying Movie Reviews Sentiment & Recommending Movies
 
 This is a Hackathon Project
+Team members
+1. Swapnadeep Sarkar
+2. Subidita Maity
+3. Md. Irshad
 
 Our movie website has 3 main features,
 
@@ -28,3 +32,11 @@ https://youtu.be/AtNg5vvKMug
 
 Application URL
 http://ec2-13-232-120-215.ap-south-1.compute.amazonaws.com:8080
+
+
+Tools/Algorithms used
+1. For recommendation - Colaborative Filtering
+2. For Sentiment Analysis - pretrained word2vec embedding layer and Bi-LSTM
+3. Google colab used for training
+4. Deployment was done using AWS ec2 instance
+5. Database used - PostGRESQL on AWS RDS
