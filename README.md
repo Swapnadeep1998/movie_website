@@ -26,5 +26,3 @@ of the reviewers, and hence will get an idea about that, which review is more li
 Youtube link of this project demonstration:
 https://youtu.be/AtNg5vvKMug
 
-Application URL
-http://ec2-13-232-120-215.ap-south-1.compute.amazonaws.com:8080
