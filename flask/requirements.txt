@@ -46,7 +46,7 @@ h5py==2.10.0
 httplib2==0.14.0
 idna==2.8
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 Keras-Preprocessing==1.1.2
 keyring==18.0.1
 language-selector==0.1
